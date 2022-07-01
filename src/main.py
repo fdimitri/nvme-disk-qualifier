@@ -48,7 +48,7 @@ def init_argparse() -> argparse.ArgumentParser:
 
 
 def write_report(tests, drive, output_path):
-    r = open(output_path, "a+")
+    r = open(drive['name'] + "_" + output_path, "w+")
 
     r.write("NVMe Disk Tester\n")
 
@@ -122,9 +122,9 @@ def main():
             else:
                 logger.info(f"Ignoring test: {test.name()}")
 
-        logger.info("All tests complete.  Compiling report.")
+        logger.info(f"Drive {drive['name']} completed.")
         write_report(tests, drive['name'], args.report)
-        logger.info("Test finished.")
+    logger.info("All tests finished.")
 
 
 if __name__ == '__main__':
